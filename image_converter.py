@@ -40,16 +40,20 @@ if __name__ == "__main__":
 			input_filename = os.path.join(input_path, file_name)
 			if os.path.isfile(input_filename):
 				output_filename = os.path.join(output_path, file_name + '.dzi')
-				print "Creating .dzi for image at " + input_filename
-				creator.create(input_filename, output_filename)
-				print(input_filename + "--->" + output_filename)
+				try:
+					creator.create(input_filename, output_filename)
+					print(input_filename + "--->" + output_filename)
+				except:
+					print(" -- Errow with converting " + input_filename + "--->" + output_filename)
 
 	elif os.path.isfile(input_path):
 		input_filename = input_path
 		output_filename = os.path.join(output_path, input_path + '.dzi')
-		print "Creating .dzi for image at " + input_filename
-		creator.create(input_filename, output_filename)
-		print(input_filename + "--->" + output_filename)
+		try:
+			creator.create(input_filename, output_filename)
+			print(input_filename + "--->" + output_filename)
+		except:
+			print(" -- Errow with converting " + input_filename + "--->" + output_filename)
 
 	else:
 		print(notfound_msg + input_path);
