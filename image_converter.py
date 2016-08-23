@@ -1,5 +1,5 @@
 import sys, getopt, os
-import deepzoom
+from deepzoom import deepzoom
 
 usage_msg = "Usage: python image_converter.py -i <input_file/dir> -o <output_dir>\n\
 Dependency: deepzoom (https://github.com/openzoom/deepzoom.py)"
@@ -40,12 +40,14 @@ if __name__ == "__main__":
 			input_filename = os.path.join(input_path, file_name)
 			if os.path.isfile(input_filename):
 				output_filename = os.path.join(output_path, file_name + '.dzi')
+				print "Creating .dzi for image at " + input_filename
 				creator.create(input_filename, output_filename)
 				print(input_filename + "--->" + output_filename)
 
 	elif os.path.isfile(input_path):
 		input_filename = input_path
 		output_filename = os.path.join(output_path, input_path + '.dzi')
+		print "Creating .dzi for image at " + input_filename
 		creator.create(input_filename, output_filename)
 		print(input_filename + "--->" + output_filename)
 
